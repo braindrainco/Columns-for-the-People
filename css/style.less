@@ -57,74 +57,9 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 @gutter: @base * 3;
 
 .wrapper{
-  width: @colwidth * 5 + @gutter * 4;
-  margin:0 auto;
-  position:relative;
+  margin-left:@gutter * 2;
 }
 
-.row{
-  width:100%;
-  clear:both;
-}
-
-.grid_1,
-.grid_2,
-.grid_3,
-.grid_4,
-.grid_5{
-  margin-right: @gutter;
-  float:left;
-  min-height:1px;
-}
-
-.grid_1{
-  width: @colwidth;
-}
-
-.grid_2{
-  width: @colwidth * 2 + @gutter;
-}
-
-.grid_3{
-  width: @colwidth * 3 + @gutter * 2;
-}
-
-.grid_4{
-  width:@colwidth * 4 + @gutter * 3;
-}
-
-.grid_5{
-  width: 100%;
-}
-
-.omega, .grid_5{
-  margin-right:0;
-}
-
-img, object, embed {
-  width: 100%;
-}
-
-img{
-  height:auto;
-}
-
-.gridfill{
-  height:@base * 3;
-  display:block;
-  border-bottom:2px solid #ddd;
-}
-
-
-/* #gridbg{
-  background-image: url('../img/gridbg.png');
-  width:100%;
-  height:1400px;
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:-200;
-} */
 
 /* =============================================================================
    Links
@@ -155,7 +90,7 @@ h1 {
     font-size: @base * 8;
     line-height: @base * 9;
     margin-top: @base * 6;
-    margin-bottom: @base *4;
+    margin-bottom: @base *2;
 }
 h2 {
     font-size: @base * 6;
@@ -171,7 +106,7 @@ h3 {
 }
 
 .deck{
-	color:#777;
+	color:#555;
 	display:block;
 	font-size:@base*3;
 	line-height:@base*4;
@@ -182,20 +117,19 @@ p, ul {
     margin-top: 0px;
     margin-bottom:0;
     text-indent:@base*4;
-    margin-bottom: @base * 2;
+    padding-bottom: @base * 2;
+    padding-right:@gutter * 2;
 }
 
 .copy{
-	width:@colwidth*10 + @gutter * 9;
-	-webkit-column-width:@colwidth * 2 + @gutter;
-	-webkit-column-gap:@gutter;
+
 }
 
-p.first_paragraph{
+#first_paragraph{
 	text-indent:0;
 }
 
-p.first_paragraph::first-line{
+#first_paragraph::first-line{
 	font-weight:600;
 }
 
@@ -347,22 +281,116 @@ table { border-collapse: collapse; border-spacing: 0; }
    ========================================================================== */
 
 header{
-	position:fixed;
-	top:0;
 	opacity:1;
+  position:fixed;
 	-webkit-transition: all 0.3s ease;
   	-moz-transition: all 0.3s ease;
   	-o-transition: all 0.3s ease;
   	transition: all 0.3s ease;
+    padding-right:@gutter*2;
+  margin-top:0;
+  margin-bottom:@gutter * 2;
+  z-index:800;
+}
+
+.meta{
+  list-style:none;
+  margin-left:0;
+  text-indent:0;
+  padding-left:0;
+  font-style:italic;
+  color:#999;
+  margin-bottom:@base*4;
+}
+
+.meta li{
+  margin-left:0;
+}
+
+.deck{
+  padding-bottom:0;
+}
+
+header.small{
+  top:@base * 2;
+  margin-top:0;
+  margin-bottom:0;
+
+}
+
+header.small h1{
+  font-size:@base * 4;
+  margin-top:0;
+  padding-top:@base * 2;
+  margin-bottom:0;
+  line-height:@base * 5;
+  color:#999;
+  float:left;
+}
+
+header.small ul{
+  float:left;
+}
+
+header.small li{
+  margin-top:@base*2 - 2px;
+  padding-left:@gutter;
+}
+
+header.small span{
+  display:none;
+}
+
+.copy{
+  display:inline-block;
+  -moz-column-width: @colwidth * 2;
+  -moz-column-gap:0;
+  -webkit-column-width: @colwidth * 2;
+  -webkit-column-gap:0;
+  column-width: @colwidth * 2;
+  column-gap:0;
 }
 
 section{
-	margin-top:@base * 38;
+  -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position:relative;
 }
 
+.endmark{
+  display:block;
+  float:right;
+}
 
+#scrollbar{
+  display:block;
+  position:fixed;
+  height:14px;
+  left:@gutter*2;
+  width:92%;
+  background-color:#eee;
+  border:1px solid #ddd;
+  margin-top:10px;
+}
 
+#progress{
+  display:block;
+  height:10px;
+  margin-top:2px;
+  margin-left:2px;
+  background-color:#ccc;
+}
 
+#location{
+  color:#999;
+  position:relative;
+  padding-left:3px;
+  top:-6px;
+  font-size:11px;
+  font-family:'lato', sans-serif;
+}
 
 /* =============================================================================
    Non-semantic helper classes
@@ -413,11 +441,4 @@ section{
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
-}
-
-@media (max-width: 1028px) {
-	.wrapper{
-		margin-left: @gutter;
-		margin-right: @gutter;
-	}
 }
